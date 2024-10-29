@@ -45,7 +45,7 @@ $id_venta=$conexion->insert_id;
         ".$a[$i]['Id']." ,
         ".$a[$i]['Cantidad']." ,
         ".$a[$i]['Precio']." ,
-        ".$a[$i]['Precio'].")")or die ($conexion->$error);
+        ".$a[$i]['Cantidad'] * $a[$i]['Precio'].")")or die ($conexion->$error);
   }
   //una vez procesada la venta, se destruye la sesion
   unset($_SESSION['carrito']);
