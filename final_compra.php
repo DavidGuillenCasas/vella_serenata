@@ -26,11 +26,31 @@ $total=0;
 for ($i=0;$i<count($a);$i++){
   //voy calculando el precio de la variable sumando el precio de los artículos seleccionados por el usuario
   $total =$total +($a[$i]['Precio']);}
+/*Creo una variable vacía para almacenar el password que introduzca el cliente.
+Ahora revisaré los valores intruducidos en el formulario de envío del pedido por parte del usuario
+- Primero miro si hay contraseña de usuario y la almaceno en la cariable crreada anteriormente*/
+$pass="";
+if(isset($_POST['c_account_password'])){
+  if($_POST['c_account_password']!=""){
+    $pass= $_POST['c_account_password'];
+  }
+}
+//Conecto con la base de datos e introduzco en la tabla "usuario" los campos necesarios extraídos de los valoresd el formulario de envío
+$conexion->query("INSERT INTO usuario (nombre, apellidos, telefono, email, password, nivel)
+values(
+'".$_POST['c_fname']."',
+'".$_POST['c_lname']."',
+'".$_POST['c_phone']."',
+'".$_POST['c_email_address']."',
+'".sha1($pass)."', 
+'usuario')")or die($conexion->error);
+//Guardo el id del usuario de esta inserción en una varibale que luego usaré para insertarla en la tabla envíos
+$id_usuario=$conexion->insert_id;
 
-  //creo una variable fecha y la capturo, para luego insertarla
+  //Por otro lado, creo una variable fecha y la capturo, para luego insertarla
   $fecha= date('Y-m-d h:m:s');
   //creo la conexión a la base datos para ir insertando en la tabla ventas los datos propios de esa tabla: Id_usuario, total y fecha.
-  $conexion ->query("insert into ventas (id_usuario, total, fecha) values (1,$total, '$fecha')")or die ($conexion->$error);
+  $conexion ->query("insert into ventas (id_usuario, total, fecha) values ($id_usuario,$total, '$fecha')")or die ($conexion->$error);
   /*recojo en una variable el campo id del registro de la tabla ventas que acabo de insertar, porque lo necesitaré a continuación para insertarlo
   en la siguiente tabla de la BD*/
 $id_venta=$conexion->insert_id;
@@ -47,6 +67,18 @@ $id_venta=$conexion->insert_id;
         ".$a[$i]['Precio']." ,
         ".$a[$i]['Cantidad'] * $a[$i]['Precio'].")")or die ($conexion->$error);
   }
+
+//Conecto con la base de datos e introduzco en la tabla "envíos" los campos necesarios extraídos de los valoresd el formulario de envío
+  $conexion->query("INSERT INTO envios (pais, direccion, provincia, cp, id_venta)
+  values(
+  '".$_POST['country']."',
+  '".$_POST['c_address']."',
+  '".$_POST['c_state_country']."',
+  '".$_POST['c_postal_zip']."',
+     $id_venta)")or die($conexion->error);
+
+
+
   //una vez procesada la venta, se destruye la sesion
   unset($_SESSION['carrito']);
 }?>

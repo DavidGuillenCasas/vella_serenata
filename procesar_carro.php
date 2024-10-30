@@ -46,8 +46,8 @@ $aCarrito =$_SESSION['carrito'];}
   <div class="site-wrap">
     <!--Se incluye la cabecera con elementos comunes -->
     <?php include("./comunes/cabecera.php"); ?> 
-
-    <div class="site-section">
+    <form action="./final_compra.php" method="post">
+      <div class="site-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-12">
@@ -60,82 +60,77 @@ $aCarrito =$_SESSION['carrito'];}
         </div>
         <!-- Comienzo datos del envío-->
         <div class="row">
-          <div class="col-md-6 mb-5 mb-md-0">
+            <div class="col-md-6 mb-5 mb-md-0">
             <h2 class="h3 mb-3 text-black">Información de envío</h2>
             <div class="p-3 p-lg-5 border">
               <div class="form-group">
-                <label for="c_country" class="text-black">País <span class="text-danger">*</span></label>
-                <select id="c_country" class="form-control">
-                  <option value="1">Selecciona un país</option>    
-                  <option value="2">España</option>    
-                  <option value="3">Portugal</option>        
+                <label for="c_country" class="text-black">País<span class="text-danger">*</span></label>
+                <select id="c_country" class="form-control" name="country" required>
+                  <option value="">-- Selecciona un país-- </option>    
+                  <option value="España">España</option>    
+                  <option value="Portugal">Portugal</option>        
                 </select>
               </div>
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_fname" class="text-black">Nome <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
+                  <label for="c_fname" class="text-black">Nome<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_fname" name="c_fname"  required>
                 </div>
                 <div class="col-md-6">
-                  <label for="c_lname" class="text-black">Apelidos <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_lname" name="c_lname">
+                  <label for="c_lname" class="text-black">Apelidos<span class="text-danger" >*</span></label>
+                  <input type="text" class="form-control" id="c_lname" name="c_lname" required>
                 </div>
               </div>
-
+            <!--
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_companyname" class="text-black">Nome empresa </label>
                   <input type="text" class="form-control" id="c_companyname" name="c_companyname">
                 </div>
               </div>
-
+            -->
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_address" class="text-black">Dirección <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="rúa e número">
+                  <label for="c_address" class="text-black">Dirección<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_address" name="c_address" placeholder="rúa, número, escaleira, piso..."  required>
                 </div>
               </div>
-
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="piso, apartamento, escaleira... (opcional)">
-              </div>
-
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_state_country" class="text-black">País <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_state_country" name="c_state_country">
+                  <label for="c_state_country" class="text-black">Provincia<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_state_country" name="c_state_country"  required>
                 </div>
                 <div class="col-md-6">
-                  <label for="c_postal_zip" class="text-black">C.P. <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                  <label for="c_postal_zip" class="text-black">C.P.<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip"  required>
                 </div>
               </div>
 
               <div class="form-group row mb-5">
                 <div class="col-md-6">
                   <label for="c_email_address" class="text-black">Dirección de email <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_email_address" name="c_email_address">
+                  <input type="text" class="form-control" id="c_email_address" name="c_email_address"  required>
                 </div>
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">Número de teléfono <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Número de teléfono">
+                  <input type="text" class="form-control" id="c_phone" name="c_phone" placeholder="Número de teléfono"  required>
                 </div>
               </div>
-               <!--
+               
               <div class="form-group">
-                <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account"> Create an account?</label>
+                <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" aria-expanded="false" aria-controls="create_an_account"><input type="checkbox" value="1" id="c_create_account"> Crea unha conta de usuario/a?</label>
                 <div class="collapse" id="create_an_account">
                   <div class="py-2">
-                    <p class="mb-3">Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
+                    <p class="mb-3">Crea una conta introducindo os teus datos a continuación.</p>
                     <div class="form-group">
-                      <label for="c_account_password" class="text-black">Account Password</label>
-                      <input type="email" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
+                      <label for="c_account_password" class="text-black">Contrasinal</label>
+                      <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
                     </div>
                   </div>
                 </div>
               </div>
 
-             
+             <!--
               <div class="form-group">
                 <label for="c_ship_different_address" class="text-black" data-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Ship To A Different Address?</label>
                 <div class="collapse" id="ship_different_address">
@@ -143,16 +138,10 @@ $aCarrito =$_SESSION['carrito'];}
 
                     <div class="form-group">
                       <label for="c_diff_country" class="text-black">País <span class="text-danger">*</span></label>
-                      <select id="c_diff_country" class="form-control">
-                        <option value="1">Select a country</option>    
-                        <option value="2">España</option>    
-                        <option value="3">Portugal</option>    
-                        <option value="4">Francia</option>    
-                        <option value="5">Italia</option>    
-                        <option value="6">Albania</option>    
-                        <option value="7">Bahrain</option>    
-                        <option value="8">Colombia</option>    
-                        <option value="9">Dominican Republic</option>    
+                      <select id="c_diff_country" class="form-control" name="pais">
+                      <option value="1">Selecciona un país</option>    
+                      <option value="2">España</option>    
+                     <option value="3">Portugal</option>   
                       </select>
                     </div>
 
@@ -167,23 +156,19 @@ $aCarrito =$_SESSION['carrito'];}
                         <input type="text" class="form-control" id="c_diff_lname" name="c_diff_lname">
                       </div>
                     </div>
-
+                    
                     <div class="form-group row">
                       <div class="col-md-12">
                         <label for="c_diff_companyname" class="text-black">Company Name </label>
                         <input type="text" class="form-control" id="c_diff_companyname" name="c_diff_companyname">
                       </div>
                     </div>
-
+                     
                     <div class="form-group row">
                       <div class="col-md-12">
-                        <label for="c_diff_address" class="text-black">Address <span class="text-danger">*</span></label>
+                        <label for="c_diff_address" class="text-black">Address<span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="c_diff_address" name="c_diff_address" placeholder="Street address">
                       </div>
-                    </div>
-
-                    <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Apartment, suite, unit etc. (optional)">
                     </div>
 
                     <div class="form-group row">
@@ -207,9 +192,7 @@ $aCarrito =$_SESSION['carrito'];}
                         <input type="text" class="form-control" id="c_diff_phone" name="c_diff_phone" placeholder="Número de teléfono">
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </div>
               -->
@@ -221,24 +204,7 @@ $aCarrito =$_SESSION['carrito'];}
             </div>
           </div>
           <div class="col-md-6">
-<!--
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <h2 class="h3 mb-3 text-black">Coupon Code</h2>
-                <div class="p-3 p-lg-5 border">
-                  
-                  <label for="c_code" class="text-black mb-3">Enter your coupon code if you have one</label>
-                  <div class="input-group w-75">
-                    <input type="text" class="form-control" id="c_code" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary btn-sm" type="button" id="button-addon2">Apply</button>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
--->           
+       
              <!-- Final datos del envío-->
              <!-- Comnienzo datos del pedido--> 
             <div class="row mb-5">
@@ -300,17 +266,6 @@ $aCarrito =$_SESSION['carrito'];}
                       </div>
                     </div>
                   </div>
-                  <!--
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">Cheque Bancario</a></h3>
-
-                    <div class="collapse" id="collapsecheque">
-                      <div class="py-2">
-                        <p class="mb-0">Fai o teu pago directamente na nosa conta bancaria. Utiliza o teu ID de pedido como referencia de pago. O teu pedido non se enviará ata que se eliminen os fondos na nosa conta.</p>
-                      </div>
-                    </div>
-                  </div>
-                     -->
                   <div class="border p-3 mb-5">
                     <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
 
@@ -323,7 +278,7 @@ $aCarrito =$_SESSION['carrito'];}
                       <!--Final de las formas de pago-->  
 
                   <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='final_compra.php'">Finaliza o pedido</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Finaliza o pedido</button>
                   </div>
 
                 </div>
@@ -331,10 +286,13 @@ $aCarrito =$_SESSION['carrito'];}
             </div>
 
           </div>
+          
+      
         </div>
         
       </div>
-    </div>
+      </div>
+    </form>
 <!-- Se incluye el pie con elementos comunes -->
     <?php include("./comunes/pie.php"); ?> 
   </div>
