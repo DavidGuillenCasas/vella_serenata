@@ -66,6 +66,10 @@ $id_venta=$conexion->insert_id;
         ".$a[$i]['Cantidad']." ,
         ".$a[$i]['Precio']." ,
         ".$a[$i]['Cantidad'] * $a[$i]['Precio'].")")or die ($conexion->$error);
+
+
+  //En la tabla productos pongo a cero el campo inventario 
+  $conexion->query("UPDATE productos SET inventario=0 WHERE id= ".$a[$i]['Id'])or die($conexion->error);  
   }
 
 //Conecto con la base de datos e introduzco en la tabla "envíos" los campos necesarios extraídos de los valoresd el formulario de envío

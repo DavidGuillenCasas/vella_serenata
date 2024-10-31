@@ -68,11 +68,12 @@
               //creo la conexión con la base de datos
                include ('./php/conexion.php');
                /*en esta variable guardo la conexión con la consulta concreta a la bae de datos, en la cual:
-               - Hago un join de la tabla productos con marcas
-               - Necesito 8 campos de la tabla productos y una de la de marcas (el nombre de la misma).*/
+               - Hago un join de la tabla productos con marcas.
+               - Necesito 8 campos de la tabla productos y una de la de marcas (el nombre de la misma).
+               - Sólo muestro los productos que tienen en el campo inventario 1, es decir, los que tienen stock disponible*/
                $resultado=$conexion ->query 
                ("SELECT b.id, b.nombre, b.descripcion, b.precio, b.imagen, b.inventario, b.id_categoria, a.marca, b.especificaciones  
-               FROM productos b INNER JOIN marcas a ON b.id_marca = a.id order by id DESC ") Or die ($conexion -> error);
+               FROM productos b INNER JOIN marcas a ON b.id_marca = a.id WHERE b.inventario =1 ORDER BY id DESC ") Or die ($conexion -> error);
                //creo un bucle para imprimir el resultado
                while ($fila= mysqli_fetch_array($resultado)){
               ?>
@@ -117,7 +118,7 @@
                include ('./php/conexion.php');
                /*hago la consulta con todos los campos a la tabla productos e incializo 
                a cero las variables para guardar las cantidades de cada categoría*/
-               $resultado=$conexion ->query ("SELECT * FROM productos ORDER BY id DESC") OR die ($conexion -> error);
+               $resultado=$conexion ->query ("SELECT * FROM productos WHERE inventario=1 ORDER BY id DESC") OR die ($conexion -> error);
                $cantidad_cuerda=0;
                $cantidad_viento=0;
                $cantidad_percusion=0;

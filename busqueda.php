@@ -84,14 +84,15 @@ if (!isset($_GET['texto'])){
                         - Coincidencia con el campo nombre
                         - Coincidencia con el campo descripción
                         - Coincidencia con el campo especificaciones
-                        - Coincidencia con el campo marca*/
+                        - Coincidencia con el campo marca
+                - Tienen que tener obligatoria mente el valor  1 en el campo inventario*/
                $resultado=$conexion ->query 
                ("SELECT b.id, b.nombre, b.descripcion, b.precio, b.imagen, b.inventario, b.id_categoria, a.marca, b.especificaciones  
-               FROM productos b INNER JOIN marcas a ON b.id_marca = a.id WHERE 
+               FROM productos b INNER JOIN marcas a ON b.id_marca = a.id WHERE (
                b.nombre LIKE '%".$_GET['texto']. "%' OR
                b.descripcion LIKE '%".$_GET['texto']. "%' OR
                b.especificaciones LIKE '%".$_GET['texto']. "%' OR
-               a.marca LIKE '%".$_GET['texto']. "%'") Or die ($conexion -> error);
+               a.marca LIKE '%".$_GET['texto']. "%') AND b.inventario =1 " ) Or die ($conexion -> error);
                 //incluyo un condicional,el cual muestra por pantalla los resultadoa de la búsqueda con el sigueinte bucle, que se explica
                if (mysqli_num_rows($resultado) > 0){
                //creo un bucle para imprimir el resultado
@@ -141,7 +142,7 @@ if (!isset($_GET['texto'])){
                include ('./php/conexion.php');
                /*hago la consulta con todos los campos a la tabla productos e incializo 
                a cero las variables para guardar las cantidades de cada categoría*/
-               $resultado=$conexion ->query ("SELECT * FROM productos ORDER BY id DESC") OR die ($conexion -> error);
+               $resultado=$conexion ->query ("SELECT * FROM productos WHERE inventario=1 ORDER BY id DESC") OR die ($conexion -> error);
                $cantidad_cuerda=0;
                $cantidad_viento=0;
                $cantidad_percusion=0;
