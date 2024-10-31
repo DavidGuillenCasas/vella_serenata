@@ -136,37 +136,27 @@ if (!isset($_GET['texto'])){
             </div>
           </div>
 
-<!-- En esta parte calcularé la cantidad de instrumentos de cada categoría para luego mostrarlos -->
-          <?php
-              //creo la conexión a la base de datos
-               include ('./php/conexion.php');
-               /*hago la consulta con todos los campos a la tabla productos e incializo 
-               a cero las variables para guardar las cantidades de cada categoría*/
-               $resultado=$conexion ->query ("SELECT * FROM productos WHERE inventario=1 ORDER BY id DESC") OR die ($conexion -> error);
-               $cantidad_cuerda=0;
-               $cantidad_viento=0;
-               $cantidad_percusion=0;
-               // recorro el resultado y según el id de categoría aumento la varibale correspondiente
-               while ($fila= mysqli_fetch_array($resultado)){
-                 switch ($fila['id_categoria']) {
-                    case 1:
-                      $cantidad_cuerda++;
-                        break;
-                    case 2:
-                      $cantidad_viento++;
-                        break;
-                    case 3:
-                      $cantidad_percusion++;
-                        break; }}
-          ?>
+
 <!-- Sección en la que se puede filtrar instrumentos por categorías y con la cantidad calculada enterior mete de cada una -->
-          <div class="col-md-3 order-1 mb-5 mb-md-0">
+<div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categorías</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Corda</span> <span class="text-black ml-auto"><?php echo $cantidad_cuerda;?></span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Vento</span> <span class="text-black ml-auto"><?php echo $cantidad_viento;?></span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Percusión</span> <span class="text-black ml-auto"><?php echo $cantidad_percusion;?></span></a></li>
+              <?php 
+              //Hago una consulta a la tabla de categorías para que me las muestre todas de manera dinámica posteriormente
+              $resultado= $conexion->query("SELECT * FROM categorias ");
+              while ($fila=mysqli_fetch_array($resultado)){
+              ?>  
+                <li class="mb-1"><a href="#" class="d-flex"><span><?php echo $fila['nombre'];?></span> 
+                <span class="text-black ml-auto">
+                  <?php
+                  /*Encierro la lógica para colcular cuantos registros hay de cada categoría cogiendo el i de categoría
+                  de la consulta anterior y así me cuenta los regitros de cada producto dentro de la misma categoría*/
+                  $resultado2=$conexion->query("SELECT COUNT(*) FROM productos WHERE inventario =1 AND id_categoria=".$fila['id'] );
+                  $fila2=mysqli_fetch_row($resultado2);
+                echo $fila2[0];?>
+                </span></a></li>
+              <?php }?> 
               </ul>
             </div>
 <!-- Sección en la que se puede filtrar instrumentos por rango de precios -->
