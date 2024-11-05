@@ -20,7 +20,7 @@ if (isset ($_SESSION['carrito'])){
     IMPORTANTE: supongo que sólo tengdré una cantidad de stock de cada artículo en concreto*/
     if($encuentra == true){
       //mejorar esta parte si queremos incluir un artículo en el carrito que ya hemos incluído
-      header("Location:./catalogo.php");
+      header("Location:./repetido.php");
       
     }else{
       // Compruebo si había algún otro instrumento en el carro de la compra previamente, y lo incluyo 

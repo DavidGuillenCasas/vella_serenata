@@ -123,11 +123,11 @@
               $resultado= $conexion->query("SELECT * FROM categorias ");
               while ($fila=mysqli_fetch_array($resultado)){
               ?>  
-                <li class="mb-1"><a href="#" class="d-flex"><span><?php echo $fila['nombre'];?></span> 
+                <li class="mb-1"><a href="./busqueda.php?texto=<?php echo $fila['id'] ?>" class="d-flex"><span><?php echo $fila['nombre'];?></span> 
                 <span class="text-black ml-auto">
                   <?php
                   /*Encierro la lógica para colcular cuantos registros hay de cada categoría cogiendo el i de categoría
-                  de la consulta anterior y así me cuenta los regitros de cada producto dentro de la misma categoría*/
+                  de la consulta anterior y así me cuenta los registros de cada producto dentro de la misma categoría*/
                   $resultado2=$conexion->query("SELECT COUNT(*) FROM productos WHERE inventario =1 AND id_categoria=".$fila['id'] );
                   $fila2=mysqli_fetch_row($resultado2);
                 echo $fila2[0];?>

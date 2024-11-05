@@ -3,10 +3,21 @@
 include ('./php/conexion.php');
 if (!isset($_GET['texto'])){
     header("Location: ./catalogo.php"); }
-
-
+else{
+/*creo una variable que dará título al parámetro de la búsqueda y con un switchs le asigno un valor según el id de la consulta de la categoría
+y si no le asigno el texto que he usado como parámetro de categoría. Lo hago así para que valga tanto para el campo de búsqueda cpomo para el filtro de categoría*/
+  $busqueda="";
+  switch($_GET['texto']){
+    case "1": $busqueda="Corda";
+    break;
+    case "2": $busqueda="Vento";
+    break;
+    case "3": $busqueda="Percusión";
+    break;
+    default: $busqueda=$_GET['texto'];
+  }  
+}
 ?>
-
 
 
 <!DOCTYPE html>
@@ -43,7 +54,7 @@ if (!isset($_GET['texto'])){
           <div class="col-md-9 order-2">
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Selección de resultados para <?php  echo $_GET['texto'];?></h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Selección de resultados para <?php  echo $busqueda;?></h2></div>
                <!--  
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
@@ -90,8 +101,7 @@ if (!isset($_GET['texto'])){
                ("SELECT b.id, b.nombre, b.descripcion, b.precio, b.imagen, b.inventario, b.id_categoria, a.marca, b.especificaciones  
                FROM productos b INNER JOIN marcas a ON b.id_marca = a.id WHERE (
                b.nombre LIKE '%".$_GET['texto']. "%' OR
-               b.descripcion LIKE '%".$_GET['texto']. "%' OR
-               b.especificaciones LIKE '%".$_GET['texto']. "%' OR
+               b.id_categoria LIKE '%".$_GET['texto']. "%' OR
                a.marca LIKE '%".$_GET['texto']. "%') AND b.inventario =1 " ) Or die ($conexion -> error);
                 //incluyo un condicional,el cual muestra por pantalla los resultadoa de la búsqueda con el sigueinte bucle, que se explica
                if (mysqli_num_rows($resultado) > 0){
@@ -147,11 +157,11 @@ if (!isset($_GET['texto'])){
               $resultado= $conexion->query("SELECT * FROM categorias ");
               while ($fila=mysqli_fetch_array($resultado)){
               ?>  
-                <li class="mb-1"><a href="#" class="d-flex"><span><?php echo $fila['nombre'];?></span> 
+                <li class="mb-1"><a href="./busqueda.php?texto=<?php echo $fila['id'] ?>" class="d-flex"><span><?php echo $fila['nombre'];?></span> 
                 <span class="text-black ml-auto">
                   <?php
                   /*Encierro la lógica para colcular cuantos registros hay de cada categoría cogiendo el i de categoría
-                  de la consulta anterior y así me cuenta los regitros de cada producto dentro de la misma categoría*/
+                  de la consulta anterior y así me cuenta los registros de cada producto dentro de la misma categoría*/
                   $resultado2=$conexion->query("SELECT COUNT(*) FROM productos WHERE inventario =1 AND id_categoria=".$fila['id'] );
                   $fila2=mysqli_fetch_row($resultado2);
                 echo $fila2[0];?>
