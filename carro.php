@@ -1,3 +1,5 @@
+<script src="js/funciones.js"></script>
+
 <?php
 /* Aquí enierro el código que permitirá traer la información de cada instrumento incluido en el carro de la compra.
 La cual viene arrastrada por la selección del usuario en las páginas anteriores
@@ -19,9 +21,11 @@ if (isset ($_SESSION['carrito'])){
     reedirecciono a la página del catálogo de instrumentos sin añadir dicho instrumento.
     IMPORTANTE: supongo que sólo tengdré una cantidad de stock de cada artículo en concreto*/
     if($encuentra == true){
-      //mejorar esta parte si queremos incluir un artículo en el carrito que ya hemos incluído
-      header("Location:./repetido.php");
-      
+      //si el instrumento ya se ha añadido al carro se ejecuta una función js queinforma que no se puede añadir el artículo dos veces
+      echo "<script>";
+      echo "funcionRepetido();";
+      echo "</script>";
+   
     }else{
       // Compruebo si había algún otro instrumento en el carro de la compra previamente, y lo incluyo 
       $nombre="";

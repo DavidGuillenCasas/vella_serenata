@@ -35,7 +35,7 @@ if(isset($_POST['c_account_password'])){
     $pass= $_POST['c_account_password'];
   }
 }
-//Conecto con la base de datos e introduzco en la tabla "usuario" los campos necesarios extraídos de los valoresd el formulario de envío
+//Conecto con la base de datos e introduzco en la tabla "usuario" los campos necesarios extraídos de los valores del formulario de envío
 $conexion->query("INSERT INTO usuario (nombre, apellidos, telefono, email, password, nivel)
 values(
 '".$_POST['c_fname']."',

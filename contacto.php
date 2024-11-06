@@ -34,7 +34,7 @@
           </div>
           <div class="col-md-7">
 
-            <form action="#" method="post">
+            <form action="./php/recibir_mensaje.php" method="post">
               
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
@@ -69,7 +69,7 @@
                 <div class="form-group row">
                   <div class="col-lg-12">
                     <!--Botón para enviar el mensaje --> 
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Envía a mensaxe">
+                    <input type="submit" onclick="funcionMensajeEnviado()" class="btn btn-primary btn-lg btn-block" value="Envía a mensaxe">
                   </div>
                 </div>
               </div>
@@ -82,7 +82,7 @@
 <!--Se incluye el pie con elementos comunes --> 
     <?php include("./comunes/pie.php"); ?> 
   </div>
-
+ 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
@@ -90,7 +90,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
+  <script src="js/funciones.js"></script>
   <script src="js/main.js"></script>
     
   </body>
