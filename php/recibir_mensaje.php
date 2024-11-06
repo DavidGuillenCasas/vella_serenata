@@ -9,8 +9,7 @@ values(
 '".$_POST['c_email']."',
 '".$_POST['c_subject']."',
 '".$_POST['c_message']."')")or die($conexion->error);
-//mensaje que se mostrará 
-echo "Mensaxe enviada con éxito";
-//redicreciono a la página de inicio
+
+//redirecciono a la página de inicio
 header("Location: /vella_serenata/inicio.php");
 ?>

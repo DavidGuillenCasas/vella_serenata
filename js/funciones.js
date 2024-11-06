@@ -6,4 +6,8 @@ function funcionMensajeEnviado(){
     function funcionRepetido(){
         alert("Non se pode engadir o mesmo instrumento dúas veces");
         }
+//mensaje para informar de que se ha subscrito correctamente
+function funcionSuscripcion(){
+    alert("Correo enviado");
+    }
     

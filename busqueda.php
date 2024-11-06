@@ -269,7 +269,7 @@ y si no le asigno el texto que he usado como parámetro de categoría. Lo hago a
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
+  <script src="js/funciones.js"></script>
   <script src="js/main.js"></script>
     
   </body>

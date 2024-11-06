@@ -63,7 +63,8 @@
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="imagenes/brand_01.png" alt="Image placeholder" class="mb-4">
+                  <a href="busqueda.php?texto=Cincinnati">
+                  <img src="imagenes/brand_01.png" alt="Image placeholder" class="mb-4"></a>
                   <h3 class="block-38-heading h4">Cincinnati Wahsboards Co.</h3>
                   <p class="block-38-subheading">Arxentina</p>
                 </div>
@@ -79,7 +80,8 @@
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="imagenes/brand_02.png" alt="Image placeholder" class="mb-4">
+                  <a href="busqueda.php?texto=National">
+                  <img src="imagenes/brand_02.png" alt="Image placeholder" class="mb-4"></a>
                   <h3 class="block-38-heading h4">National Resophonic</h3>
                   <p class="block-38-subheading">USA</p>
                 </div>
@@ -95,7 +97,8 @@
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="imagenes/brand_03.png" alt="Image placeholder" class="mb-4">
+                <a href="busqueda.php?texto=Kalamazoo">
+                  <img src="imagenes/brand_03.png" alt="Image placeholder" class="mb-4"></a>
                   <h3 class="block-38-heading h4">Kalamazoo</h3>
                   <p class="block-38-subheading">USA</p>
                 </div>
@@ -111,7 +114,8 @@
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="imagenes/brand_04.png" alt="Image placeholder" class="mb-4">
+                 <a href="busqueda.php?texto=Hohner">
+                  <img src="imagenes/brand_04.png" alt="Image placeholder" class="mb-4"></a>
                   <h3 class="block-38-heading h4">Hohner</h3>
                   <p class="block-38-subheading">Alemania</p>
                 </div>
@@ -170,7 +174,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/aos.js"></script>
-
+  <script src="js/funciones.js"></script>
   <script src="js/main.js"></script>
     
   </body>

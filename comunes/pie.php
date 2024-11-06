@@ -1,3 +1,4 @@
+
 <footer class="site-footer border-top">
       <div class="container">
         <div class="row">
@@ -49,11 +50,11 @@
             </div>
 
             <div class="block-7">
-              <form action="#" method="post">
-                <label for="email_subscribe" class="footer-heading">Subscríbete</label>
+              <form action="./php/recibir_suscripcion.php" method="post">
+                <label for="email_subscribe" class="footer-heading">Suscríbete</label>
                 <div class="form-group">
-                  <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
-                  <input type="submit" class="btn btn-sm btn-primary" value="Envía">
+                  <input type="email" class="form-control py-4" id="email_subscribe" name="c_email_sus" placeholder="Email" required>
+                  <input type="submit"  class="btn btn-sm btn-primary" value="Envía">
                 </div>
               </form>
             </div>

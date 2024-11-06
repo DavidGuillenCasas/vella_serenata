@@ -1,5 +1,5 @@
+<!-- >INcluyo este script al principio de todo porque usaré la función casi al empezar la lógica en php -->
 <script src="js/funciones.js"></script>
-
 <?php
 /* Aquí enierro el código que permitirá traer la información de cada instrumento incluido en el carro de la compra.
 La cual viene arrastrada por la selección del usuario en las páginas anteriores
