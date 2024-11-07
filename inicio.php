@@ -1,25 +1,29 @@
+<?php
+//cierro la sesión si viene por método get indicado tal y como he programado en el login y en el registro de usuario
+  session_start();
+  if(isset ($_GET['cierre_sesion'])){
+    unset($_SESSION['carrito']);
+    unset($_SESSION['usuario']);}
+?>
 <!DOCTYPE html>
 <html lang="gl">
   <head>
-  <title>Vella Serenata - Instrumentos Vintage</title>
+    <title>Vella Serenata - Instrumentos Vintage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
   
     <!-- Cargando e icono de la tienda en la parte superior de la pestaña -->
     <link rel="shortcut icon" type="image/x-icon" href="imagenes/icono.ico">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-  
 
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/style.css">
-  
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
   

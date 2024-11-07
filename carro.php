@@ -1,4 +1,4 @@
-<!-- >INcluyo este script al principio de todo porque usaré la función casi al empezar la lógica en php -->
+<!-- >Incluyo este script al principio de todo porque usaré la función casi al empezar la lógica en php -->
 <script src="js/funciones.js"></script>
 <?php
 /* Aquí enierro el código que permitirá traer la información de cada instrumento incluido en el carro de la compra.
@@ -148,23 +148,7 @@ if (isset ($_SESSION['carrito'])){
                       <h2 class="h5 text-black"><?php echo $aCarrito[$i]['Nombre']; ?></h2>
                     </td>
                     <td><?php echo $aCarrito[$i]['Precio']; ?> Eu</td>
-                    <td><?php echo $aCarrito[$i]['Cantidad']; ?>
-                      <!--
-                      <div class="input-group mb-3" style="max-width: 120px;">
-                        
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">-->
-
-                        <!--
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
-                        
-                      </div>
-                      -->
-                    </td>
+                    <td><?php echo $aCarrito[$i]['Cantidad']; ?></td>
                     <td><?php echo $aCarrito[$i]['Precio'];?> Eu</td>
 
                     <!-- al final de esta página mediante un script le daremos funcionalidad a este botón de eliminar el artículo-->
@@ -190,21 +174,6 @@ if (isset ($_SESSION['carrito'])){
                 <button class="btn btn-outline-primary btn-sm btn-block" onclick="window.location='catalogo.php'">Continúa mercando</button>
               </div>
             </div>
-            <!--
-            <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Coupon</label>
-                <p>Enter your coupon code if you have one.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary btn-sm">Apply Coupon</button>
-              </div>
-
-            </div>
-            -->
           </div>
           <div class="col-md-6 pl-5">
             <div class="row justify-content-end">
@@ -214,16 +183,6 @@ if (isset ($_SESSION['carrito'])){
                     <h3 class="text-black h4 text-uppercase">Total</h3>
                   </div>
                 </div>
-                <!--
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
-                  </div>
-                </div>
-                    -->
                 <div class="row mb-5">
                   <div class="col-md-6">
                     <span class="text-black">Total</span>

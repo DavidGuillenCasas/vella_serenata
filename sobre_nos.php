@@ -1,10 +1,15 @@
+<?php
+//inicio sesión 
+  session_start();
+  
+?>
+
 <!DOCTYPE html>
 <html lang="gl">
   <head>
-  <title>Vella Serenata - Instrumentos Vintage</title>
+    <title>Vella Serenata - Instrumentos Vintage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     
@@ -18,7 +23,6 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
-    
   </head>
   <body>
   

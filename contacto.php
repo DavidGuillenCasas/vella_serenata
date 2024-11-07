@@ -1,3 +1,7 @@
+<?php
+  //inicio sesión 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="gl">
   <head>

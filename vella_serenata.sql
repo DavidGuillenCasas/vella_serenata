@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2024 a las 16:08:32
+-- Tiempo de generación: 06-11-2024 a las 18:56:12
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,13 +70,30 @@ CREATE TABLE `envios` (
   `id_venta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `envios`
+-- Estructura de tabla para la tabla `formulario_contacto`
 --
 
-INSERT INTO `envios` (`id_envio`, `pais`, `direccion`, `provincia`, `cp`, `id_venta`) VALUES
-(6, 'España', 'campo estrada 1 ', 'Lisboa', '85681', 14),
-(7, 'Portugal', 'campo estrada 1 ', 'Madrid', '85681', 15);
+CREATE TABLE `formulario_contacto` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `asunto` text NOT NULL,
+  `mensaje` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `formulario_contacto`
+--
+
+INSERT INTO `formulario_contacto` (`id`, `nombre`, `apellidos`, `email`, `asunto`, `mensaje`) VALUES
+(15, 'David ', 'Guillén', 'david@gmail.com', 'hola', 'consulta'),
+(16, '', '', '', '', ''),
+(17, 'David ', 'zsdgh', 'zsr@dwfgt.com', 'zsfdg', 'zsfdg'),
+(18, 'David ', 'Guillén', 'david@gmail.com', 'hola', 'viuhyoih');
 
 -- --------------------------------------------------------
 
@@ -153,14 +170,24 @@ CREATE TABLE `productos_venta` (
   `subtotal` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `productos_venta`
+-- Estructura de tabla para la tabla `suscripciones`
 --
 
-INSERT INTO `productos_venta` (`id`, `id_venta`, `id_producto`, `cantidad`, `precio`, `subtotal`) VALUES
-(18, 14, 1, 1, 150, 150),
-(19, 14, 6, 1, 2500, 2500),
-(20, 15, 6, 1, 2500, 2500);
+CREATE TABLE `suscripciones` (
+  `id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `suscripciones`
+--
+
+INSERT INTO `suscripciones` (`id`, `email`) VALUES
+(17, 'hola@gmail.com'),
+(18, 'hola@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -184,7 +211,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `telefono`, `email`, `password`, `nivel`) VALUES
 (6, 'David ', 'Guillén', '65150077', 'davidguillencasas@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'usuario'),
-(7, 'David ', 'Guillén', '65150077', 'davidguillencasas@gmail.com', '018809d8283bb60cc0dd187b46d458d069ba7fec', 'usuario');
+(8, 'Sara', 'Pazos', '65150077', 'sarapachos@gmail.com', '5b427952bda4870233974ae78d1f5e005c9f29f6', 'usuario');
 
 -- --------------------------------------------------------
 
@@ -198,14 +225,6 @@ CREATE TABLE `ventas` (
   `total` double NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Volcado de datos para la tabla `ventas`
---
-
-INSERT INTO `ventas` (`id`, `id_usuario`, `total`, `fecha`) VALUES
-(14, 6, 2650, '2024-10-30 02:10:31'),
-(15, 7, 2500, '2024-10-30 02:10:32');
 
 --
 -- Índices para tablas volcadas
@@ -231,6 +250,12 @@ ALTER TABLE `envios`
   ADD KEY `id_venta` (`id_venta`);
 
 --
+-- Indices de la tabla `formulario_contacto`
+--
+ALTER TABLE `formulario_contacto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -253,6 +278,12 @@ ALTER TABLE `productos_venta`
   ADD KEY `id_producto` (`id_producto`);
 
 --
+-- Indices de la tabla `suscripciones`
+--
+ALTER TABLE `suscripciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -262,7 +293,8 @@ ALTER TABLE `usuario`
 -- Indices de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -284,7 +316,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `envios`
 --
 ALTER TABLE `envios`
-  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `formulario_contacto`
+--
+ALTER TABLE `formulario_contacto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -302,19 +340,25 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `productos_venta`
 --
 ALTER TABLE `productos_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `suscripciones`
+--
+ALTER TABLE `suscripciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
@@ -339,6 +383,12 @@ ALTER TABLE `productos`
 ALTER TABLE `productos_venta`
   ADD CONSTRAINT `productos_venta_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`),
   ADD CONSTRAINT `productos_venta_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`);
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
