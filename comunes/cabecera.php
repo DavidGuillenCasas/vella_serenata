@@ -19,7 +19,7 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                <li>
+                 <li>
                   <a href="loguearse.php">
                   <span class="icon icon-person"></span></a></li>
                  <li>
@@ -36,6 +36,11 @@
                      </span>
                     </a>
                   </li> 
+                  <?php
+                        //aquí intruduzco el algoritmo para que muestre el número de artículos al lado del icono del carrito
+                          if (isset ($_SESSION['usuario'])){
+                            echo "<a href='./php/cerrar_sesion.php'>Cerrar Sesión</a>";
+                          }?>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
               </div> 

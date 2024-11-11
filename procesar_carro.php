@@ -9,7 +9,7 @@ Los ASPECTOS CLAVE a tener en cuenta son:
 
 //inicio la sesión
 session_start();
-//si la variable de sesión no está creada, redirección al índice.
+//si la variable de sesión no está creada, redirección al catálogo.
 if(!isset($_SESSION['carrito'])){
   header('Location: ./catalogo.php');
 }
@@ -98,18 +98,32 @@ $aCarrito =$_SESSION['carrito'];}
                   <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip"  required>
                 </div>
               </div>
+              <?php
+              //Creo variables de sesión vacías que luego les asignaré los valores de login del usuario
+                  $correo_usuario="";
+                  $tfno_usuario="";
+                  //Compruebo si hay variable de sesiónq eu se corresponde con el logueo de usuario
+                  if(isset($_SESSION['usuario'])){
+                    $datos_usuario=$_SESSION['usuario'];
+                    //asigno los valores de la variable a las variables vacías. 
+                    for($i=0;$i<count($datos_usuario);$i++){
+                        $correo_usuario= $datos_usuario[$i]['Email'];
+                        $tfno_usuario=$datos_usuario[$i]['Telefono'];
+                      //las usuaré como valores por defecto ya en el formulario, por si el susuario ya se logueo, le aparecen ya esos campos cubiertos.
+                      }}
+              ?>
 
               <div class="form-group row mb-5">
                 <div class="col-md-6">
                   <label for="c_email_address" class="text-black">Dirección de email <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_email_address" name="c_email_address"  required>
+                  <input type="text" class="form-control" id="c_email_address" name="c_email_address"  value="<?php echo $correo_usuario;?>" required>
                 </div>
                 <div class="col-md-6">
                   <label for="c_phone" class="text-black">Número de teléfono <span class="text-danger">*</span></label>
-                  <input type="tel" class="form-control" id="c_phone" name="c_phone" placeholder="Número de teléfono"  required>
+                  <input type="tel" class="form-control" id="c_phone" name="c_phone" value="<?php echo $tfno_usuario;?>"  required>
                 </div>
               </div>
-               
+              <!-- 
               <div class="form-group">
                 <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" 
                 aria-expanded="false" aria-controls="create_an_account">
@@ -123,7 +137,7 @@ $aCarrito =$_SESSION['carrito'];}
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <label for="c_order_notes" class="text-black">Anotacións</label>

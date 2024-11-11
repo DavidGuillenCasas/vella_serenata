@@ -37,7 +37,7 @@
                 </div>
                 <a href="./registrarse.php">Crear unha conta nova</a> <br>
                 <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                <button type="submit" class="btn btn-primary btn-lg" onclick="window.location ='inicio.php?cierre_sesion'">Salir</button>
+                <button type="submit" class="btn btn-primary btn-lg" onclick="window.location ='inicio.php'">Salir</button>
                 
             </form>
         </div>

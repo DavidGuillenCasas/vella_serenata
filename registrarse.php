@@ -50,7 +50,7 @@
                         echo "<h4 class='text-red'>As contrasináis non coinciden</h4>";}
                     ?>
                 <button type="submit" class="btn btn-primary">Rexistrarse</button>
-                <button type="submit" class="btn btn-primary btn-lg" onclick="window.location ='inicio.php?cierre_sesion'">Salir</button>
+                <button type="submit" class="btn btn-primary btn-lg" onclick="window.location ='inicio.php'">Salir</button>
             </form>
         </div>
     </div>

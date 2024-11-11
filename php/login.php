@@ -8,13 +8,13 @@
     //asigno a estas variables los campos introducidos para consultarlos después en la BD
        $email =$_POST['email'];
        $password = sha1($_POST['pass']);
-       $res = $conexion->query("SELECT * FROM usuario 
+       $res = $conexion->query("SELECT id, nombre, apellidos, telefono, email, password FROM usuario 
        WHERE email='$email' 
        AND password='$password'")or die($conexion->error);
     // si obtiene conicidencia creo un array para guardar los doatos de ese susuario existente en a BD
     if( mysqli_num_rows($res) > 0 ){
-        while ($fila=mysqli_fetch_row($res)){
-            $a[]= array(
+        while ($fila=mysqli_fetch_array($res)){
+               $a[]= array(
                 'Id_usuario'=> $fila['id'],
                 'Nombre'=> $fila['nombre'],
                 'Apellidos'=> $fila['apellidos'],
@@ -22,6 +22,7 @@
                 'Email'=> $fila['email']);};
             if(isset($a)){
                 $_SESSION['usuario']=$a;
+               
                 //redireciono a la pantalla del carrito de la compra
                 header("Location:/vella_serenata/carro.php");}
     }else{

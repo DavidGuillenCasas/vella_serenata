@@ -142,13 +142,6 @@ y si no le asigno el texto que he usado como parámetro de categoría. Lo hago a
               <?php }?> 
               </ul>
             </div>
-<!-- Sección en la que se puede filtrar instrumentos por rango de precios -->
-            <div class="border p-4 rounded mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtrar por precio</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
             </div>
           </div>
         </div>

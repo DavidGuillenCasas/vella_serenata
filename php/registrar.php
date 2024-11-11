@@ -12,8 +12,8 @@
             $email=$_POST['email'];
             $pass=sha1($_POST['pass']);
             //introduzco los datos en la tabla de usuarios de la base de datos
-            $conexion->query("INSERT INTO usuario (nombre, apellidos, telefono, email, password, nivel) 
-            values('$nombre','$apellidos','$tfno','$email','$pass','usuario')  ")or die($conexion->error);
+            $conexion->query("INSERT INTO usuario (nombre, apellidos, telefono, email, password) 
+            values('$nombre','$apellidos','$tfno','$email','$pass')  ")or die($conexion->error);
                
             echo "Registro completado";
             //redirecciono para inicar sesión con el usuario que se acaba de registrar
