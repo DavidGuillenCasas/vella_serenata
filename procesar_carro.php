@@ -123,21 +123,6 @@ $aCarrito =$_SESSION['carrito'];}
                   <input type="tel" class="form-control" id="c_phone" name="c_phone" value="<?php echo $tfno_usuario;?>"  required>
                 </div>
               </div>
-              <!-- 
-              <div class="form-group">
-                <label for="c_create_account" class="text-black" data-toggle="collapse" href="#create_an_account" role="button" 
-                aria-expanded="false" aria-controls="create_an_account">
-                <input type="checkbox" value="1" id="c_create_account"> Crea unha conta de usuario/a?</label>
-                <div class="collapse" id="create_an_account">
-                  <div class="py-2">
-                    <p class="mb-3">Crea una conta introducindo os teus datos a continuación.</p>
-                    <div class="form-group">
-                      <label for="c_account_password" class="text-black">Contrasinal</label>
-                      <input type="password" class="form-control" id="c_account_password" name="c_account_password" placeholder="">
-                    </div>
-                  </div>
-                </div>
-              </div> -->
 
               <div class="form-group">
                 <label for="c_order_notes" class="text-black">Anotacións</label>

@@ -1,7 +1,7 @@
 <?php
 //Incluyo el archivo con las variables de conexión a  la base de datos
 include('./conexion.php');
-//inserto en la tabla corrspondiente los datos del formulario que ha rellenado el ususario
+//inserto en la tabla correspondiente los datos del formulario que ha rellenado el ususario
 $conexion->query("INSERT INTO formulario_contacto (nombre, apellidos, email, asunto, mensaje)
 values(
 '".$_POST['c_fname']."',
