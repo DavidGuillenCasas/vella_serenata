@@ -1,11 +1,11 @@
 <?php
 /*Aquí creo la lógica para el funcionamiento de esta página.
 Los ASPECTOS CLAVE a tener en cuenta son:
-- Recojo los artículos incluídos en el carro de la compra, los cuales vienen de la página cart.php. 
+- Recojo los artículos incluídos en el carro de la compra, los cuales vienen de la página carro.php. 
 - Tendré que pintar por pantalla esos artículos en el sitio dedicado a ello.
 - Tengo que recoger los datos del cliente que se incluyen en el formulario del pedido.
-- Tengo que conectar con el pago seleccionado
-- Si todo está correcto al pulsar "Finaliza o Pedido", redirecciono a la página 'final_compra.php', la cual completará la transacción con la base de datos*/
+- Si todo está correcto al pulsar "Procesar o Pedido", redirecciono a la página 'insertar_venta.php',
+la cual tirne la lógica para introducir los datos que se han rellenado en el formulario en las disitintas tablas de la BD*/
 
 //inicio la sesión
 session_start();
@@ -42,20 +42,16 @@ $aCarrito =$_SESSION['carrito'];}
     
   </head>
   <body>
-     
+
   <div class="site-wrap">
     <!--Se incluye la cabecera con elementos comunes -->
     <?php include("./comunes/cabecera.php"); ?> 
-    <form action="./final_compra.php" method="post">
+    <!--Aquí envío los datos del formulario por método post -->
+    <form action="./php/insertar_venta.php" method="post">
       <div class="site-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-12">
-            <!--
-            <div class="border p-4 rounded" role="alert">
-              Returning customer? <a href="#">Click here</a> to login
-            </div>
-            -->
           </div>
         </div>
         <!-- Comienzo datos del envío-->
@@ -99,17 +95,17 @@ $aCarrito =$_SESSION['carrito'];}
                 </div>
               </div>
               <?php
-              //Creo variables de sesión vacías que luego les asignaré los valores de login del usuario
+              //Creo dos variables vacías que luego les asignaré los valores de login del usuario.
                   $correo_usuario="";
                   $tfno_usuario="";
-                  //Compruebo si hay variable de sesiónq eu se corresponde con el logueo de usuario
+                  //Compruebo si hay variable de sesión Usuario, que se corresponde con el logueo del mismo.
                   if(isset($_SESSION['usuario'])){
                     $datos_usuario=$_SESSION['usuario'];
-                    //asigno los valores de la variable a las variables vacías. 
+                    //asigno los valores de la variable a las variables que creé previamente vacías. 
                     for($i=0;$i<count($datos_usuario);$i++){
                         $correo_usuario= $datos_usuario[$i]['Email'];
                         $tfno_usuario=$datos_usuario[$i]['Telefono'];
-                      //las usuaré como valores por defecto ya en el formulario, por si el susuario ya se logueo, le aparecen ya esos campos cubiertos.
+                      //las usuaré como valores por defecto ya en el formulario, por si el usuario ya se logueó, estos campos le aparecerán ya cubiertos.
                       }}
               ?>
 
@@ -132,7 +128,6 @@ $aCarrito =$_SESSION['carrito'];}
             </div>
           </div>
           <div class="col-md-6">
-       
              <!-- Final datos del envío-->
              <!-- Comnienzo datos del pedido--> 
             <div class="row mb-5">
@@ -147,7 +142,7 @@ $aCarrito =$_SESSION['carrito'];}
                     <tbody>
 
                     <?php
-                    /*aquí es donde creo la lógica para imprirmir los artículos seleccionados en el carro de la compra
+                    /*Aquí es donde creo la lógica para imprirmir los artículos seleccionados en el carro de la compra
                     Primero creo una variable total, que recogerá el total de todos los artículos del carro.
                     La inicializo a cero*/ 
                      $total =0;
@@ -166,15 +161,9 @@ $aCarrito =$_SESSION['carrito'];}
                       </tr>
 
                        <?php
-                      //final de cada vuelta del bucle for
-                        }?>
-
-                      <!--
-                      <tr>
-                        <td class="text-black font-weight-bold"><strong>Subtotal</strong></td>
-                        <td class="text-black">$350.00</td>
-                      </tr>
-                     -->
+                       //final de cada vuelta del bucle for
+                        }
+                        ?>
 
                       <tr>
                         <td class="text-black font-weight-bold"><strong>Total do pedido</strong></td>
@@ -184,41 +173,15 @@ $aCarrito =$_SESSION['carrito'];}
                     </tbody>
                   </table>
                   <!-- Final datos del pedido-->
-                      <!--Comienzo de las formas de pago-->
-                  <div class="border p-3 mb-3">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Transferencia Bancaria</a></h3>
-
-                    <div class="collapse" id="collapsebank">
-                      <div class="py-2">
-                        <p class="mb-0">Fai o teu pago directamente na nosa conta bancaria. Utiliza o teu ID de pedido como referencia de pago. O teu pedido non se enviará ata que se eliminen os fondos na nosa conta.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="border p-3 mb-5">
-                    <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
-
-                    <div class="collapse" id="collapsepaypal">
-                      <div class="py-2">
-                        <p class="mb-0">Fai o teu pago directamente na nosa conta bancaria. Utiliza o teu ID de pedido como referencia de pago. O teu pedido non se enviará ata que se eliminen os fondos na nosa conta.</p>
-                      </div>
-                    </div>
-                  </div>
-                      <!--Final de las formas de pago-->  
-
                   <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Finaliza o pedido</button>
+                    <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Pagar</button>
                   </div>
-
                 </div>
               </div>
             </div>
-
           </div>
-          
-      
         </div>
-        
-      </div>
+       </div>
       </div>
     </form>
 <!-- Se incluye el pie con elementos comunes -->
@@ -234,6 +197,6 @@ $aCarrito =$_SESSION['carrito'];}
   <script src="js/aos.js"></script>
   <script src="js/funciones.js"></script>
   <script src="js/main.js"></script>
-    
-  </body>
+
+ </body>
 </html>
