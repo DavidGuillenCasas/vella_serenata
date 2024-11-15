@@ -55,9 +55,8 @@ else{
   <div class="site-wrap">
     <!--Se incluye la cabecera con elementos comunes -->
     <?php include("./comunes/cabecera.php"); ?> 
-    <form action="" method="post">
       <div class="site-section">
-      <div class="container">
+       <div class="container">
         <div class="row mb-5">
           <div class="col-md-12">
           </div>
@@ -77,7 +76,7 @@ else{
 
                   
                       <tr>
-                        <td class="text-black font-weight-bold"><strong>Total do pedido</strong></td>
+                        <td class="text-black font-weight-bold"><strong>Total da compra</strong></td>
                         <!--Imprimo el total del pedido-->
                         <td class="text-black font-weight-bold"><strong><?php echo $total;?> Eu.</strong></td>
                       </tr>
@@ -107,23 +106,14 @@ else{
                     </div>
                   </div>
                       <!--Final de las formas de pago-->  
-
-                  <div class="form-group">
-                    <button class="btn btn-primary btn-lg py-3 btn-block" type="submit">Finaliza o pedido</button>
-                  </div>
-
                 </div>
               </div>
             </div>
-
           </div>
-          
-      
         </div>
-        
+       </div>
       </div>
-      </div>
-                      </form>
+
 <!-- Se incluye el pie con elementos comunes -->
     <?php include("./comunes/pie.php"); ?> 
   </div>

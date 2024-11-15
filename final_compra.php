@@ -8,6 +8,7 @@ $conexion->query (" INSERT INTO pagos (metodo, id_venta)
 values(
 '".$_GET['metodo']."',
 ".$_GET['id_venta'].")") or die ($conexion->error);
+
 //redirecciono a esta misma página pero mostrando el id de la venta.
 header ('Location: ./final_compra.php?id_venta='.$_GET['id_venta']);
 
@@ -42,7 +43,16 @@ header ('Location: ./final_compra.php?id_venta='.$_GET['id_venta']);
   
   <div class="site-wrap">
     <!--Se incluye la cabecera con elementos comunes --> 
-   <?php include("./comunes/cabecera.php"); ?> 
+   <?php include("./comunes/cabecera.php");
+     //incluyo conexión a BD
+     include('./php/conexion.php');
+     //consulto la tabla de envío s para guardar en una variable el número de envío y mostrarlo luego
+      $id_venta=$_GET['id_venta'];
+      $datos=$conexion->query (" SELECT * FROM envios WHERE id_venta='$id_venta'") or die ($conexion->error);
+      $datos_envio= mysqli_fetch_row($datos);
+      $id_envio=$datos_envio[0];
+   
+   ?> 
 
     <div class="site-section">
       <div class="container">
@@ -50,7 +60,8 @@ header ('Location: ./final_compra.php?id_venta='.$_GET['id_venta']);
           <div class="col-md-12 text-center">
             <span class="icon-check_circle display-3 text-success"></span>
             <h2 class="display-3 text-black">Moitas Gracias!</h2>
-            <p class="lead mb-5">O teu pedido completouse.</p>
+            <p class="lead mb-5">O túa compra completouse.</p>
+            <p class="lead mb-5">O envío co número : <?php echo $id_envio;?> está en camino</p>
             <p><a href="catalogo.php" class="btn btn-sm btn-primary">Volta a tenda</a></p>
           </div>
         </div>
