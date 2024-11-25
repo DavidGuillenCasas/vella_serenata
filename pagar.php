@@ -1,7 +1,7 @@
 <?php
 /*Aquí creo la lógica para el funcionamiento de esta página.
 Los ASPECTOS CLAVE a tener en cuenta son:
-- Darle a elegir al usuario el método de pago (actualmente sólo tenog implementado e integrado Paypal
+- Darle a elegir al usuario el método de pago (actualmente sólo tengo implementado e integrado Paypal
 - Recoger el id de la venta porque lo necesitaré para extraer el total de la misma 
 y mostrarlo, tanto en la página, como en la pasarela de paypal
 - Completar el pago con un usuario sandbox de paypal. */

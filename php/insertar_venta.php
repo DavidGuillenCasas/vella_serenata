@@ -57,7 +57,7 @@ if(isset($_SESSION['usuario'])){
          //En la tabla productos pongo a cero el campo inventario 
           $conexion->query("UPDATE productos SET inventario=0 WHERE id= ".$a[$i]['Id'])or die($conexion->error); }
 
-        //Conecto con la base de datos e introduzco en la tabla "envíos" los campos necesarios extraídos de los valoresd el formulario de envío
+        //Conecto con la base de datos e introduzco en la tabla "envíos" los campos necesarios extraídos de los valores del formulario de envío
          $conexion->query("INSERT INTO envios (pais, direccion, provincia, cp, id_venta)
         values(
             '".$_POST['country']."',
