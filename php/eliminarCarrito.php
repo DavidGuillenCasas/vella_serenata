@@ -2,7 +2,7 @@
 //inicio sesión para luego meter dentro de un array la variable de sesión
 session_start();
 $a = $_SESSION['carrito'];
-/* recorre el array y si no coincide el artículo a eliminar con el que le estoy enviando emdiante ajax el método POST,
+/* recorre el array y si no coincide el artículo a eliminar con el que le estoy enviando mediante ajax el método POST,
 se va creando un nuevo array en el cual voy introduciendo los valores de cada registro*/ 
 for ($i=0;$i<count($a);$i++){
     if($a[$i]['Id'] != $_POST['id']){

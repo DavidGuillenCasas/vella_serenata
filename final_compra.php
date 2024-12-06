@@ -1,9 +1,8 @@
 
 <?php
-
+//inserto en la tabla pagos el método y el id de la venta si elexiste el id de la venta y si existe el método de pago
 if (isset($_GET['id_venta']) && isset ($_GET['metodo'])){
 include('./php/conexion.php');
-//inserto en la tabla pagos el método y el id de la venta
 $conexion->query (" INSERT INTO pagos (metodo, id_venta)
 values(
 '".$_GET['metodo']."',

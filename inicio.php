@@ -1,10 +1,8 @@
 <?php
-//cierro la sesión si viene por método get indicado tal y como he programado en el login y en el registro de usuario
-  session_start();
-  /*if(isset ($_GET['cierre_sesion'])){
-    unset($_SESSION['carrito']);
-    unset($_SESSION['usuario']);}*/
+//inicio sesión
+  session_start();  
 ?>
+
 <!DOCTYPE html>
 <html lang="gl">
   <head>

@@ -1,4 +1,4 @@
-<script src="js/funciones.js"></script>
+
 <?php
 //Incluyo el archivo con las variables de conexión a  la base de datos
 include('./conexion.php');

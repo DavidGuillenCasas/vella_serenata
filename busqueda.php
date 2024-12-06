@@ -21,7 +21,6 @@ y si no le asigno el texto que he usado como parámetro de categoría. Lo hago a
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="gl">
   <head>
@@ -103,7 +102,6 @@ y si no le asigno el texto que he usado como parámetro de categoría. Lo hago a
             //Si no encuentra resultados para la búsqueda, se muestra un mensaje indicativo
                 else { echo '<h2> Non temos resultados para a túa búsqueda<h2>';}
             ?>
-
 
             </div>
             <div class="row" data-aos="fade-up">
