@@ -58,10 +58,10 @@ header ('Location: ./final_compra.php?id_venta='.$_GET['id_venta']);
         <div class="row">
           <div class="col-md-12 text-center">
             <span class="icon-check_circle display-3 text-success"></span>
-            <h2 class="display-3 text-black">Moitas Gracias!</h2>
+            <h2 class="display-3 text-black">Moitas Grazas!</h2>
             <p class="lead mb-5">O túa compra completouse.</p>
-            <p class="lead mb-5">O envío co número : <?php echo $id_envio;?> está en camino</p>
-            <p><a href="catalogo.php" class="btn btn-sm btn-primary">Volta a tenda</a></p>
+            <p class="lead mb-5">O envío co número : <?php echo $id_envio;?> está en camiño</p>
+            <p><a href="catalogo.php" class="btn btn-sm btn-primary">Volta á tenda</a></p>
           </div>
         </div>
       </div>

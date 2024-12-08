@@ -72,8 +72,8 @@
                   <p class="block-38-subheading">Arxentina</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Corría 1944 no Mar de plata, Arxentina. Lucho e o seu curmán Rodri,un enxeñeiro industrial, amañaron una táboa de laver rota,
-                     e un anacoo de metal antes dun concerto, e así naceu una compañia moi popular de Washboards. </p>
+                  <p>Corría 1944 no Mar de plata, Arxentina. Lucho e o seu curmán Rodri, un enxeñeiro industrial, amañaron una táboa de lavar rota
+                     e un anaco de metal antes dun concerto, e así naceu una compañia moi popular de Washboards. </p>
                 </div>
               </div>
             </div>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="block-38-body">
                   <p>Kalamazoo é o nome de dúas liñas de instrumentos diferentes producidas por Gibson.
-                     En ambos os casos, Kalamazoo era unha marca económica. Pero hoxe en día case imposible de atopar. </p>
+                     Ambas liñas sempre foron económicas. Hoxe en día é case imposible de atopar. </p>
                 </div>
               </div>
             </div>
